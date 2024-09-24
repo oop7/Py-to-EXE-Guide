@@ -118,5 +118,7 @@ Your Python script is now converted into an executable file! You can share this 
 
 ## ℹ️ **Acknowledgments:**
 
-- Special thanks to CodersLegacy, which was instrumental in the functionality of this guide.
+- Special thanks to CodersLegacy
+- Special thanks to pyinstaller
+- Special thanks to auto-py-to-exe
 
