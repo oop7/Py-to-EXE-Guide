@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README - Python to Executable Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #343a40;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        h1, h2, h3 {
+            color: #007bff;
+        }
+        code {
+            background-color: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+        .dark-mode .container {
+            background-color: #495057;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .dark-mode code {
+            background-color: #6c757d;
+            color: darkorange;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><strong>How to Convert a Python Script to an Executable (.exe)</strong></h1>
+
+        <p>This guide will show you how to convert a Python script into a standalone executable file using tools like <code>PyInstaller</code> and <code>auto-py-to-exe</code>.</p>
+
+        <!-- Toggle switch for dark mode -->
+        <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" id="modeSwitch" onchange="toggleMode()">
+            <label class="form-check-label" for="modeSwitch">Toggle Dark Mode</label>
+        </div>
+
+        <h2>1. <strong>Set Up the Project Folder</strong></h2>
+        <ul>
+            <li><p>Create a folder and name it whatever you like, for example, <code>envs</code>.</p></li>
+            <li><p>Move or copy your Python script (<code>.py</code> file) into this folder.</p></li>
+        </ul>
+
+        <h2>2. <strong>Open Visual Studio Code (VS Code)</strong></h2>
+        <ul>
+            <li><p>Launch VS Code and open the folder that contains your script.</p></li>
+            <li><p>Select your Python script file in the explorer pane.</p></li>
+            <li><p>open the terminal</p></li>
+        </ul>
+
+        <h2>3. <strong>Create a Virtual Environment</strong></h2>
+        <p>To ensure that the required dependencies are isolated and consistent, create a virtual environment:</p>
+        <p><code>bash
+        C:\Users\(your_username)\AppData\Local\Programs\Python\(python_version)\python.exe -m venv test
+        </code>
+        Here, <code>test</code> is the name of the virtual environment. You can replace it with any name you prefer.</p>
+
+        <h2>4. <strong>Activate the Virtual Environment</strong></h2>
+        <p>To activate the virtual environment, run the following command:</p>
+        <ul>
+            <li>On Windows, in the terminal:</li>
+        </ul>
+        <p><code>bash
+        test\scripts\activate
+        </code></p>
+        <ul>
+            <li>If you're facing issues with the command above, try:</li>
+        </ul>
+        <p><code>bash
+        test\scripts\activate.bat
+        </code></p>
+
+        <h2>5. <strong>Install Required Packages</strong></h2>
+        <p>After activating the virtual environment, you need to install the necessary dependencies:</p>
+        <ol>
+            <li>Install the dependencies for your script:</li>
+        </ol>
+        <p><code>bash
+        pip install -r requirements.txt
+        </code></p>
+        <p>(If you don't have a <code>requirements.txt</code> file, manually install each dependency using <code>pip install &lt;package_name&gt;</code>.</p>
+        <ol start="2">
+            <li>Install <code>pyinstaller</code>:</li>
+        </ol>
+        <p><code>
+        pip install pyinstaller
+        </code>
+        3. Install <code>auto-py-to-exe</code>:</p>
+        <p><code>bash
+        pip install auto-py-to-exe
+        </code></p>
+
+        <h2>6. <strong>Launch auto-py-to-exe</strong></h2>
+        <p>Once installed, launch the tool by simply running the following command in the terminal:</p>
+        <p><code>bash
+        auto-py-to-exe
+        </code></p>
+
+        <h2>7. <strong>Configure the Conversion</strong></h2>
+        <p>In the <code>auto-py-to-exe</code> GUI:</p>
+        <ul>
+            <li><p>Select <strong>One File</strong>.</p></li>
+            <li><p>Choose <strong>Window Based</strong> to hide the console window (optional but useful for GUI applications).</p></li>
+        </ul>
+
+        <h2>8. <strong>Optimize the Executable (Optional)</strong></h2>
+        <p>You can use <strong>UPX</strong> to compress your executable and reduce its file size. To do this:</p>
+        <ol>
+            <li><p><strong>Open the UPX folder:</strong> Navigate to the folder where UPX is located.</p></li>
+            <li><p><strong>Open PowerShell with Shift+Right-click:</strong> Hold <code>Shift</code>, then right-click inside the UPX folder and choose "Open PowerShell window here."</p></li>
+            <li><p>Run the following command:</p></li>
+        </ol>
+        <p><code>bash
+        .\upx --best "path_to_your_executable"
+        </code>
+        Replace <code>"path_to_your_executable"</code> with the actual path to your generated <code>.exe</code> file.</p>
+        <ul>
+            <li>If you face the error <code>GUARD_CF enabled PE files are not supported</code>, try the following:</li>
+        </ul>
+        <p><code>
+        .\upx --best -f "path_to_your_executable"
+        </code></p>
+
+        <h2>✅ 9. <strong>Enjoy!</strong></h2>
+        <p>Your Python script is now converted into an executable file! You can share this <code>.exe</code> with others, and it will run on their machines even if they don't have Python installed.</p>
+
+        <h2>❓ <strong>Additional Notes:</strong></h2>
+        <ul>
+            <li><p>Ensure that the path to your Python installation and other tools like UPX is correct.</p></li>
+            <li><p>The UPX compression is optional and mainly used to reduce the file size of the .exe file.</p></li>
+            <li><p>You can include a shortcut to activate the virtual environment or use the -r flag to automate the installation of dependencies.</p></li>
+        </ul>
+
+        <h2>📜 <strong>License:</strong></h2>
+        <ul>
+            <li>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</li>
+        </ul>
+
+        <h2>ℹ️ <strong>Acknowledgments:</strong></h2>
+        <ul>
+            <li>Special thanks to CodersLegacy</li>
+            <li>Special thanks to pyinstaller</li>
+            <li>Special thanks to auto-py-to-exe</li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle("dark-mode");
+        }
+    </script>
+</body>
+</html>
