@@ -1,177 +1,919 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>README - Python to Executable Guide</title>
+    <title>Complete Python to Executable Guide</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-dark.min.css" rel="stylesheet"
+        id="prism-dark" disabled>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
-            color: #343a40;
-            padding: 20px;
-            font-family: 'Arial', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
         }
-        .container {
-            max-width: 800px;
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #343a40;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .nav-pills {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 30px;
+        }
+
+        .nav-pills .nav-link {
             border-radius: 8px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, box-shadow 0.3s;
+            margin: 0 5px;
+            transition: all 0.3s ease;
         }
-        h1, h2, h3 {
-            color: #007bff;
+
+        .nav-pills .nav-link.active {
+            background: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
         }
-        code {
-            background-color: #e9ecef;
-            padding: 2px 5px;
-            border-radius: 4px;
+
+        .tool-card {
+            border: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            height: 100%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .difficulty-easy {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .difficulty-medium {
+            background: var(--warning-color);
+            color: black;
+        }
+
+        .difficulty-hard {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .feature-icon {
+            color: var(--success-color);
+            margin-right: 8px;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 4px solid var(--warning-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            border-left: 4px solid var(--info-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-left: 4px solid var(--success-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
         /* Dark mode styles */
         .dark-mode {
-            background-color: #343a40;
-            color: #f8f9fa;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ecf0f1;
         }
-        .dark-mode .container {
-            background-color: #495057;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+
+        .dark-mode .content-card {
+            background: rgba(52, 73, 94, 0.95);
+            color: #ecf0f1;
         }
-        .dark-mode code {
-            background-color: #6c757d;
-            color: darkorange;
+
+        .dark-mode .tool-card {
+            background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+            color: #ecf0f1;
         }
-        
+
+        .dark-mode .comparison-table {
+            background: #34495e;
+            color: #ecf0f1;
+        }
+
+        .dark-mode .comparison-table td {
+            border-bottom-color: #4a5f7a;
+        }
+
+        .floating-toc {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .floating-toc.show {
+            display: block;
+        }
+
+        .toc-item {
+            display: block;
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 5px 0;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .toc-item:hover {
+            color: var(--secondary-color);
+            padding-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .floating-toc {
+                display: none !important;
+            }
+
+            .main-container {
+                padding: 10px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1><strong>How to Convert a Python Script to an Executable (.exe)</strong></h1>
-
-        <p>This guide will show you how to convert a Python script into a standalone executable file using tools like <code>PyInstaller</code> and <code>auto-py-to-exe</code>.</p>
-
-        <!-- Toggle switch for dark mode -->
-        <div class="form-check form-switch mb-3">
-            <input class="form-check-input" type="checkbox" id="modeSwitch" onchange="toggleMode()">
-            <label class="form-check-label" for="modeSwitch">Toggle Dark Mode</label>
-        </div>
-
-        <h2>1. <strong>Set Up the Project Folder</strong></h2>
-        <ul>
-            <li><p>Create a folder and name it whatever you like, for example, <code>envs</code>.</p></li>
-            <li><p>Move or copy your Python script (<code>.py</code> file) into this folder.</p></li>
-        </ul>
-
-        <h2>2. <strong>Open Visual Studio Code (VS Code)</strong></h2>
-        <ul>
-            <li><p>Launch VS Code and open the folder that contains your script.</p></li>
-            <li><p>Select your Python script file in the explorer pane.</p></li>
-            <li><p>open the terminal</p></li>
-        </ul>
-
-        <h2>3. <strong>Create a Virtual Environment</strong></h2>
-        <p>To ensure that the required dependencies are isolated and consistent, create a virtual environment:</p>
-        <p><code>bash
-        C:\Users\(your_username)\AppData\Local\Programs\Python\(python_version)\python.exe -m venv test
-        </code>
-        Here, <code>test</code> is the name of the virtual environment. You can replace it with any name you prefer.</p>
-
-        <h2>4. <strong>Activate the Virtual Environment</strong></h2>
-        <p>To activate the virtual environment, run the following command:</p>
-        <ul>
-            <li>On Windows, in the terminal:</li>
-        </ul>
-        <p><code>bash
-        test\scripts\activate
-        </code></p>
-        <ul>
-            <li>If you're facing issues with the command above, try:</li>
-        </ul>
-        <p><code>bash
-        test\scripts\activate.bat
-        </code></p>
-
-        <h2>5. <strong>Install Required Packages</strong></h2>
-        <p>After activating the virtual environment, you need to install the necessary dependencies:</p>
-        <ol>
-            <li>Install the dependencies for your script:</li>
-        </ol>
-        <p><code>bash
-        pip install -r requirements.txt
-        </code></p>
-        <p>(If you don't have a <code>requirements.txt</code> file, manually install each dependency using <code>pip install &lt;package_name&gt;</code>.</p>
-        <ol start="2">
-            <li>Install <code>pyinstaller</code>:</li>
-        </ol>
-        <p><code>
-        pip install pyinstaller
-        </code>
-        3. Install <code>auto-py-to-exe</code>:</p>
-        <p><code>bash
-        pip install auto-py-to-exe
-        </code></p>
-
-        <h2>6. <strong>Launch auto-py-to-exe</strong></h2>
-        <p>Once installed, launch the tool by simply running the following command in the terminal:</p>
-        <p><code>bash
-        auto-py-to-exe
-        </code></p>
-
-        <h2>7. <strong>Configure the Conversion</strong></h2>
-        <p>In the <code>auto-py-to-exe</code> GUI:</p>
-        <ul>
-            <li><p>Select <strong>One File</strong>.</p></li>
-            <li><p>Choose <strong>Window Based</strong> to hide the console window (optional but useful for GUI applications).</p></li>
-        </ul>
-
-        <h2>8. <strong>Optimize the Executable (Optional)</strong></h2>
-        <p>You can use <strong>UPX</strong> to compress your executable and reduce its file size. To do this:</p>
-        <ol>
-            <li><p><strong>Open the UPX folder:</strong> Navigate to the folder where UPX is located.</p></li>
-            <li><p><strong>Open PowerShell with Shift+Right-click:</strong> Hold <code>Shift</code>, then right-click inside the UPX folder and choose "Open PowerShell window here."</p></li>
-            <li><p>Run the following command:</p></li>
-        </ol>
-        <p><code>bash
-        .\upx --best "path_to_your_executable"
-        </code>
-        Replace <code>"path_to_your_executable"</code> with the actual path to your generated <code>.exe</code> file.</p>
-        <ul>
-            <li>If you face the error <code>GUARD_CF enabled PE files are not supported</code>, try the following:</li>
-        </ul>
-        <p><code>
-        .\upx --best -f "path_to_your_executable"
-        </code></p>
-
-        <h2>✅ 9. <strong>Enjoy!</strong></h2>
-        <p>Your Python script is now converted into an executable file! You can share this <code>.exe</code> with others, and it will run on their machines even if they don't have Python installed.</p>
-
-        <h2>❓ <strong>Additional Notes:</strong></h2>
-        <ul>
-            <li><p>Ensure that the path to your Python installation and other tools like UPX is correct.</p></li>
-            <li><p>The UPX compression is optional and mainly used to reduce the file size of the .exe file.</p></li>
-            <li><p>You can include a shortcut to activate the virtual environment or use the -r flag to automate the installation of dependencies.</p></li>
-        </ul>
-
-        <h2>📜 <strong>License:</strong></h2>
-        <ul>
-            <li>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</li>
-        </ul>
-
-        <h2>ℹ️ <strong>Acknowledgments:</strong></h2>
-        <ul>
-            <li>Special thanks to CodersLegacy</li>
-            <li>Special thanks to pyinstaller</li>
-            <li>Special thanks to auto-py-to-exe</li>
-        </ul>
+    <!-- Floating Table of Contents -->
+    <div class="floating-toc" id="floatingToc">
+        <h6><i class="fas fa-list"></i> Quick Navigation</h6>
+        <a href="#overview" class="toc-item">Overview</a>
+        <a href="#comparison" class="toc-item">Tool Comparison</a>
+        <a href="#pyinstaller" class="toc-item">PyInstaller</a>
+        <a href="#auto-py-to-exe" class="toc-item">auto-py-to-exe</a>
+        <a href="#cx-freeze" class="toc-item">cx_Freeze</a>
+        <a href="#nuitka" class="toc-item">Nuitka</a>
+        <a href="#troubleshooting" class="toc-item">Troubleshooting</a>
     </div>
 
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <div class="main-container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">
+                <i class="fab fa-python"></i> Python to Executable
+            </h1>
+            <p class="hero-subtitle">
+                Complete guide for converting Python scripts to standalone executables
+            </p>
+
+            <!-- Dark Mode Toggle -->
+            <div class="form-check form-switch mt-4">
+                <input class="form-check-input" type="checkbox" id="modeSwitch" onchange="toggleMode()">
+                <label class="form-check-label text-white" for="modeSwitch">
+                    <i class="fas fa-moon"></i> Dark Mode
+                </label>
+            </div>
+        </div>
+
+        <!-- Navigation Pills -->
+        <ul class="nav nav-pills nav-fill" id="methodTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" data-bs-target="#overview"
+                    type="button">
+                    <i class="fas fa-info-circle"></i> Overview
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="comparison-tab" data-bs-toggle="pill" data-bs-target="#comparison"
+                    type="button">
+                    <i class="fas fa-balance-scale"></i> Compare Tools
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="methods-tab" data-bs-toggle="pill" data-bs-target="#methods" type="button">
+                    <i class="fas fa-cogs"></i> Methods
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="troubleshooting-tab" data-bs-toggle="pill"
+                    data-bs-target="#troubleshooting" type="button">
+                    <i class="fas fa-wrench"></i> Troubleshooting
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="methodTabsContent">
+
+            <!-- Overview Tab -->
+            <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                <div class="content-card">
+                    <h2><i class="fas fa-rocket"></i> Quick Start</h2>
+                    <div class="success-box">
+                        <strong>TL;DR:</strong> For most users, PyInstaller is the easiest option:
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            <code>pip install pyinstaller<br>pyinstaller --onefile your_script.py</code>
+                        </div>
+                    </div>
+
+                    <h3><i class="fas fa-question-circle"></i> Why Convert Python to Executable?</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="text-center p-3">
+                                <i class="fas fa-users tool-icon text-primary"></i>
+                                <h5>Easy Distribution</h5>
+                                <p>Share your app without requiring Python installation</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center p-3">
+                                <i class="fas fa-shield-alt tool-icon text-success"></i>
+                                <h5>Source Protection</h5>
+                                <p>Protect your code from easy reverse engineering</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="text-center p-3">
+                                <i class="fas fa-cog tool-icon text-info"></i>
+                                <h5>System Integration</h5>
+                                <p>Easy integration with schedulers and automation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Tab -->
+            <div class="tab-pane fade" id="comparison" role="tabpanel">
+                <div class="content-card">
+                    <h2><i class="fas fa-balance-scale"></i> Tool Comparison</h2>
+
+                    <!-- Tool Cards -->
+                    <div class="row mb-4">
+                        <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="card tool-card position-relative">
+                                <span class="difficulty-badge difficulty-easy">Easy</span>
+                                <div class="card-body text-center">
+                                    <i class="fas fa-box tool-icon text-primary"></i>
+                                    <h5>PyInstaller</h5>
+                                    <p class="small">Most popular, works out-of-the-box</p>
+                                    <ul class="list-unstyled text-start small">
+                                        <li><i class="feature-icon fas fa-check"></i>Great compatibility</li>
+                                        <li><i class="feature-icon fas fa-check"></i>Easy to use</li>
+                                        <li><i class="feature-icon fas fa-times text-danger"></i>Larger files</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="card tool-card position-relative">
+                                <span class="difficulty-badge difficulty-easy">Easy</span>
+                                <div class="card-body text-center">
+                                    <i class="fas fa-desktop tool-icon text-success"></i>
+                                    <h5>auto-py-to-exe</h5>
+                                    <p class="small">GUI wrapper for PyInstaller</p>
+                                    <ul class="list-unstyled text-start small">
+                                        <li><i class="feature-icon fas fa-check"></i>Visual interface</li>
+                                        <li><i class="feature-icon fas fa-check"></i>Beginner friendly</li>
+                                        <li><i class="feature-icon fas fa-times text-danger"></i>Same limitations as
+                                            PyInstaller</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="card tool-card position-relative">
+                                <span class="difficulty-badge difficulty-medium">Medium</span>
+                                <div class="card-body text-center">
+                                    <i class="fas fa-tachometer-alt tool-icon text-warning"></i>
+                                    <h5>cx_Freeze</h5>
+                                    <p class="small">Fast startup, native installers</p>
+                                    <ul class="list-unstyled text-start small">
+                                        <li><i class="feature-icon fas fa-check"></i>Faster startup</li>
+                                        <li><i class="feature-icon fas fa-check"></i>Native installers</li>
+                                        <li><i class="feature-icon fas fa-times text-danger"></i>More setup required
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="card tool-card position-relative">
+                                <span class="difficulty-badge difficulty-hard">Hard</span>
+                                <div class="card-body text-center">
+                                    <i class="fas fa-rocket tool-icon text-danger"></i>
+                                    <h5>Nuitka</h5>
+                                    <p class="small">True compilation, best performance</p>
+                                    <ul class="list-unstyled text-start small">
+                                        <li><i class="feature-icon fas fa-check"></i>Fastest execution</li>
+                                        <li><i class="feature-icon fas fa-check"></i>Better security</li>
+                                        <li><i class="feature-icon fas fa-times text-danger"></i>Complex setup</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Comparison Table -->
+                    <table class="table comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>PyInstaller</th>
+                                <th>cx_Freeze</th>
+                                <th>Nuitka</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Build Time</strong></td>
+                                <td><span class="badge bg-success">⚡ Fast</span></td>
+                                <td><span class="badge bg-warning">🐌 Slower</span></td>
+                                <td><span class="badge bg-danger">🐌🐌 Slowest</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Startup Time</strong></td>
+                                <td><span class="badge bg-warning">🐌 Slow</span></td>
+                                <td><span class="badge bg-success">⚡ Fast</span></td>
+                                <td><span class="badge bg-success">⚡⚡ Fastest</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>File Size</strong></td>
+                                <td><span class="badge bg-success">📦 Small</span></td>
+                                <td><span class="badge bg-warning">📦📦 Larger</span></td>
+                                <td><span class="badge bg-danger">📦📦📦 Largest</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Security</strong></td>
+                                <td><span class="badge bg-danger">🔒 Low</span></td>
+                                <td><span class="badge bg-danger">🔒 Low</span></td>
+                                <td><span class="badge bg-success">🔒🔒🔒 High</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Methods Tab -->
+            <div class="tab-pane fade" id="methods" role="tabpanel">
+                <div class="content-card">
+                    <h2><i class="fas fa-cogs"></i> Conversion Methods</h2>
+
+                    <!-- PyInstaller Method -->
+                    <div class="mb-5" id="pyinstaller">
+                        <h3><i class="fas fa-box text-primary"></i> Method 1: PyInstaller (Recommended)</h3>
+
+                        <h4>🛠️ Setup Process</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            <code># Create virtual environment<br>python -m venv venv<br><br># Windows<br>venv\Scripts\activate<br><br># macOS/Linux<br>source venv/bin/activate<br><br># Install dependencies<br>pip install -r requirements.txt<br>pip install pyinstaller</code>
+                        </div>
+
+                        <h4>🚀 Basic Usage</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Simple Conversion</h5>
+                                <div class="code-block">
+                                    <button class="copy-btn" onclick="copyCode(this)"><i
+                                            class="fas fa-copy"></i></button>
+                                    <code>pyinstaller your_script.py</code>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Single File</h5>
+                                <div class="code-block">
+                                    <button class="copy-btn" onclick="copyCode(this)"><i
+                                            class="fas fa-copy"></i></button>
+                                    <code>pyinstaller --onefile your_script.py</code>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>GUI Application</h5>
+                                <div class="code-block">
+                                    <button class="copy-btn" onclick="copyCode(this)"><i
+                                            class="fas fa-copy"></i></button>
+                                    <code>pyinstaller --onefile --windowed your_script.py</code>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>With Custom Icon</h5>
+                                <div class="code-block">
+                                    <button class="copy-btn" onclick="copyCode(this)"><i
+                                            class="fas fa-copy"></i></button>
+                                    <code>pyinstaller --onefile --icon=app.ico your_script.py</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- auto-py-to-exe Method -->
+                    <div class="mb-5" id="auto-py-to-exe">
+                        <h3><i class="fas fa-desktop text-success"></i> Method 2: auto-py-to-exe (GUI)</h3>
+
+                        <div class="info-box">
+                            <strong>Perfect for beginners!</strong> This provides a visual interface for PyInstaller.
+                        </div>
+
+                        <h4>🛠️ Installation & Usage</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            <code>pip install auto-py-to-exe<br>auto-py-to-exe</code>
+                        </div>
+
+                        <h4>📝 Configuration Steps</h4>
+                        <ol>
+                            <li><strong>Script Location:</strong> Browse and select your <code>.py</code> file</li>
+                            <li><strong>Onefile:</strong> Choose "One File" for single executable</li>
+                            <li><strong>Console Window:</strong> Select "Window Based" for GUI apps</li>
+                            <li><strong>Icon:</strong> Optional - add a custom <code>.ico</code> file</li>
+                            <li><strong>Additional Files:</strong> Add any data files your script needs</li>
+                            <li><strong>Convert:</strong> Click "CONVERT .PY TO .EXE"</li>
+                        </ol>
+                    </div>
+
+                    <!-- cx_Freeze Method -->
+                    <div class="mb-5" id="cx-freeze">
+                        <h3><i class="fas fa-tachometer-alt text-warning"></i> Method 3: cx_Freeze (Fast Startup)</h3>
+
+                        <h4>🛠️ Installation</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            <code>pip install cx_freeze</code>
+                        </div>
+
+                        <h4>📝 Setup Script (setup.py)</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            <code>from cx_Freeze import setup, Executable<br><br>build_options = {<br>    'packages': [],<br>    'excludes': [],<br>    'include_files': []<br>}<br><br>executables = [<br>    Executable('your_script.py', base='Win32GUI')<br>]<br><br>setup(<br>    name='YourApp',<br>    version='1.0',<br>    options={'build_exe': build_options},<br>    executables=executables<br>)</code>
+                        </div>
+
+                        <h4>🚀 Build Commands</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            <code># Build executable<br>python setup.py build<br><br># Create Windows installer<br>python setup.py bdist_msi</code>
+                        </div>
+                    </div>
+
+                    <!-- Nuitka Method -->
+                    <div class="mb-5" id="nuitka">
+                        <h3><i class="fas fa-rocket text-danger"></i> Method 4: Nuitka (Performance)</h3>
+
+                        <div class="warning-box">
+                            <strong>Advanced users only!</strong> Requires C compiler installation.
+                        </div>
+
+                        <h4>🛠️ Prerequisites & Installation</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            <code># Windows: Install MinGW64 or Visual Studio<br># macOS: Install Xcode command line tools<br># Linux: Install GCC<br><br>pip install nuitka</code>
+                        </div>
+
+                        <h4>🚀 Basic Usage</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            <code># Compile to executable<br>python -m nuitka --onefile your_script.py<br><br># GUI application<br>python -m nuitka --onefile --windows-disable-console your_script.py<br><br># With optimizations<br>python -m nuitka --onefile --enable-plugin=anti-bloat your_script.py</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting Tab -->
+            <div class="tab-pane fade" id="troubleshooting" role="tabpanel">
+                <div class="content-card">
+                    <h2><i class="fas fa-wrench"></i> Troubleshooting</h2>
+
+                    <h3>🔧 Common Issues & Solutions</h3>
+
+                    <div class="mb-4">
+                        <h4><i class="fas fa-exclamation-triangle text-warning"></i> ImportError: Module not found</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            <code># Add hidden imports<br>pyinstaller --hidden-import=module_name your_script.py</code>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4><i class="fas fa-file-alt text-info"></i> Missing Data Files</h4>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
+                            <code># Include data files<br>pyinstaller --add-data "data_folder;data_folder" your_script.py<br><br># Use this in your Python code:<br>import sys<br>import os<br><br>def resource_path(relative_path):<br>    if hasattr(sys, '_MEIPASS'):<br>        return os.path.join(sys._MEIPASS, relative_path)<br>    return os.path.join(os.path.abspath("."), relative_path)</code>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4><i class="fas fa-compress text-success"></i> Large File Sizes</h4>
+                        <div class="info-box">
+                            <strong>Tips to reduce executable size:</strong>
+                            <ul class="mb-0">
+                                <li>Use virtual environments (most important!)</li>
+                                <li>Exclude unnecessary modules with <code>--exclude-module</code></li>
+                                <li>Use UPX compression</li>
+                                <li>Consider using <code>--onedir</code> instead of <code>--onefile</code></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4><i class="fas fa-shield-alt text-danger"></i> Antivirus False Positives</h4>
+                        <div class="warning-box">
+                            <strong>Solutions:</strong>
+                            <ul class="mb-0">
+                                <li>Add exclusions to your antivirus</li>
+                                <li>Use code signing certificates</li>
+                                <li>Consider Nuitka for better reputation</li>
+                                <li>Submit to antivirus vendors for whitelisting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>🐛 Debugging Tips</h3>
+                    <div class="success-box">
+                        <ol class="mb-0">
+                            <li><strong>Test in --onedir mode first</strong> for easier debugging</li>
+                            <li><strong>Run executable from command line</strong> to see error messages</li>
+                            <li><strong>Use --log-level=DEBUG</strong> for verbose output</li>
+                            <li><strong>Check build/warn-*.txt files</strong> for warnings</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="content-card mt-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-book"></i> Additional Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="https://pyinstaller.readthedocs.io/" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> PyInstaller Docs</a></li>
+                        <li><a href="https://cx-freeze.readthedocs.io/" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> cx_Freeze Docs</a></li>
+                        <li><a href="https://nuitka.net/doc/user-manual.html" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i> Nuitka Manual</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-heart"></i> Acknowledgments</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-star text-warning"></i> PyInstaller Team</li>
+                        <li><i class="fas fa-star text-warning"></i> cx_Freeze Developers</li>
+                        <li><i class="fas fa-star text-warning"></i> Nuitka Project</li>
+                        <li><i class="fas fa-star text-warning"></i> auto-py-to-exe</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">
+                    <i class="fas fa-balance-scale"></i> Licensed under MIT License |
+                    <i class="fas fa-code-branch"></i> <a href="#" class="text-decoration-none">Contribute on GitHub</a>
+                    |
+                    <i class="fas fa-star"></i> <strong>Star this guide if it helped you!</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
     <script>
+        // Dark mode toggle
         function toggleMode() {
             const body = document.body;
-            body.classList.toggle("dark-mode");
+            const isDark = body.classList.toggle("dark-mode");
+
+            // Toggle Prism theme
+            const prismLight = document.querySelector('link[href*="prism.min.css"]');
+            const prismDark = document.getElementById('prism-dark');
+
+            if (isDark) {
+                prismLight.disabled = true;
+                prismDark.disabled = false;
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                prismLight.disabled = false;
+                prismDark.disabled = true;
+                localStorage.setItem('darkMode', 'false');
+            }
         }
+
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling;
+            const text = codeBlock.textContent;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                button.style.background = 'rgba(40, 167, 69, 0.3)';
+
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                    button.style.background = 'rgba(255,255,255,0.1)';
+                }, 2000);
+            });
+        }
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide scroll to top button and floating TOC
+        window.addEventListener('scroll', () => {
+            const scrollBtn = document.getElementById('scrollToTop');
+            const floatingToc = document.getElementById('floatingToc');
+
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('show');
+                if (window.innerWidth > 768) {
+                    floatingToc.classList.add('show');
+                }
+            } else {
+                scrollBtn.classList.remove('show');
+                floatingToc.classList.remove('show');
+            }
+        });
+
+        // Smooth scrolling for TOC links
+        document.querySelectorAll('.toc-item').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Load saved dark mode preference
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedMode = localStorage.getItem('darkMode');
+            if (savedMode === 'true') {
+                document.getElementById('modeSwitch').checked = true;
+                toggleMode();
+            }
+        });
+
+        // Add syntax highlighting to code blocks
+        document.addEventListener('DOMContentLoaded', () => {
+            // Apply Prism highlighting to code blocks
+            Prism.highlightAll();
+        });
+
+        // Tab switching with URL hash support
+        document.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const tabButton = document.querySelector(`[data-bs-target="${hash}"]`);
+                if (tabButton) {
+                    const tab = new bootstrap.Tab(tabButton);
+                    tab.show();
+                }
+            }
+        });
+
+        // Update URL hash when tab changes
+        document.querySelectorAll('[data-bs-toggle="pill"]').forEach(tab => {
+            tab.addEventListener('shown.bs.tab', (e) => {
+                const target = e.target.getAttribute('data-bs-target');
+                history.replaceState(null, null, target);
+            });
+        });
+
+        // Add loading animation for better UX
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Add hover effects to tool cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const toolCards = document.querySelectorAll('.tool-card');
+
+            toolCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        // Add progress indicator for long code blocks
+        function addProgressIndicator() {
+            const codeBlocks = document.querySelectorAll('.code-block');
+
+            codeBlocks.forEach(block => {
+                if (block.scrollWidth > block.clientWidth) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'scroll-indicator';
+                    indicator.innerHTML = '<i class="fas fa-arrows-alt-h"></i> Scroll horizontally';
+                    indicator.style.cssText = `
+                        position: absolute;
+                        bottom: 5px;
+                        right: 50px;
+                        font-size: 0.8rem;
+                        color: rgba(255,255,255,0.6);
+                        pointer-events: none;
+                    `;
+                    block.appendChild(indicator);
+                }
+            });
+        }
+
+        // Initialize progress indicators
+        document.addEventListener('DOMContentLoaded', addProgressIndicator);
+        window.addEventListener('resize', addProgressIndicator);
     </script>
 </body>
+
 </html>
