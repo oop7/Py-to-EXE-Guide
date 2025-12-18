@@ -2,7 +2,7 @@
 
 A comprehensive guide covering multiple methods and tools for converting Python scripts into standalone executable files, including PyInstaller, cx_Freeze, Nuitka, and auto-py-to-exe.
 
-## 📋 Table of Contents
+## Table of Contents
 
 1. [Quick Start Guide](#quick-start-guide)
 2. [Tool Comparison](#tool-comparison)
@@ -14,7 +14,7 @@ A comprehensive guide covering multiple methods and tools for converting Python 
 8. [Best Practices](#best-practices)
 9. [Advanced Configuration](#advanced-configuration)
 
-## 🚀 Quick Start Guide
+## Quick Start Guide
 
 **TL;DR:** For most users, PyInstaller is the easiest option:
 
@@ -23,14 +23,14 @@ pip install pyinstaller
 pyinstaller --onefile your_script.py
 ```
 
-## 🔧 Tool Comparison
+## Tool Comparison
 
 | Tool | Best For | Pros | Cons | Difficulty |
 |------|----------|------|------|------------|
-| **PyInstaller** | General use, beginners | Easy to use, great compatibility | Larger files, slower startup | ⭐ Easy |
-| **auto-py-to-exe** | GUI lovers | Visual interface, PyInstaller backend | Same as PyInstaller | ⭐ Easy |
-| **cx_Freeze** | GUI apps, fast startup | Faster load times, native installers | Larger files, more setup | ⭐⭐ Medium |
-| **Nuitka** | Commercial, performance | Fastest execution, better security | Complex setup, long compile time | ⭐⭐⭐ Hard |
+| **PyInstaller** | General use, beginners | Easy to use, great compatibility | Larger files, slower startup | Easy |
+| **auto-py-to-exe** | GUI lovers | Visual interface, PyInstaller backend | Same as PyInstaller | Easy |
+| **cx_Freeze** | GUI apps, fast startup | Faster load times, native installers | Larger files, more setup | Medium |
+| **Nuitka** | Commercial, performance | Fastest execution, better security | Complex setup, long compile time | Hard |
 
 ---
 
@@ -38,7 +38,7 @@ pyinstaller --onefile your_script.py
 
 PyInstaller is the most popular and user-friendly tool for converting Python scripts to executables.
 
-### 🛠️ Setup Process
+### Setup Process
 
 #### 1. **Set Up Project Environment**
 
@@ -461,11 +461,11 @@ python -m nuitka --onefile --windows-disable-console --windows-icon-from-ico=app
 
 ### 1. **Path Issues in Bundled Apps**
 ```python
-# ❌ Wrong - hardcoded paths won't work
+#  Wrong - hardcoded paths won't work
 with open('data.txt', 'r') as f:
     content = f.read()
 
-# ✅ Correct - use resource_path function
+#  Correct - use resource_path function
 import sys
 import os
 

@@ -19,7 +19,7 @@
 <body>
     <!-- Floating Table of Contents -->
     <div class="floating-toc" id="floatingToc">
-        <h6><i class="fas fa-list"></i> Quick Navigation</h6>
+        <h6>Quick Navigation</h6>
         <a href="#overview" class="toc-item">Overview</a>
         <a href="#comparison" class="toc-item">Tool Comparison</a>
         <a href="#pyinstaller" class="toc-item">PyInstaller</a>
@@ -38,14 +38,14 @@
         <!-- Hero Section -->
         <div class="hero-section">
             <h1 class="hero-title">
-                <i class="fab fa-python"></i> Python to Executable
+                Python to Executable
             </h1>
             <p class="hero-subtitle">
                 Complete guide for converting Python scripts to standalone executables
             </p>
 
             <!-- Dark Mode Toggle -->
-            <button id="modeSwitch" onclick="toggleMode()" class="btn btn-outline-light mt-4" aria-label="Toggle dark mode">
+            <button id="modeSwitch" onclick="toggleMode()" class="btn btn-outline-dark mt-4" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
         </div>
@@ -55,24 +55,24 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="overview-tab" data-bs-toggle="pill" data-bs-target="#overview"
                     type="button">
-                    <i class="fas fa-info-circle"></i> Overview
+                    Overview
                 </button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="comparison-tab" data-bs-toggle="pill" data-bs-target="#comparison"
                     type="button">
-                    <i class="fas fa-balance-scale"></i> Compare Tools
+                    Compare Tools
                 </button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="methods-tab" data-bs-toggle="pill" data-bs-target="#methods" type="button">
-                    <i class="fas fa-cogs"></i> Methods
+                    Methods
                 </button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="troubleshooting-tab" data-bs-toggle="pill"
                     data-bs-target="#troubleshooting" type="button">
-                    <i class="fas fa-wrench"></i> Troubleshooting
+                    Troubleshooting
                 </button>
             </li>
         </ul>
@@ -83,7 +83,7 @@
             <!-- Overview Tab -->
             <div class="tab-pane fade show active" id="overview" role="tabpanel">
                 <div class="content-card">
-                    <h2><i class="fas fa-rocket"></i> Quick Start</h2>
+                    <h2>Quick Start</h2>
                     <div class="success-box">
                         <strong>TL;DR:</strong> For most users, PyInstaller is the easiest option:
                         <div class="code-block">
@@ -92,7 +92,7 @@
                         </div>
                     </div>
 
-                    <h3><i class="fas fa-question-circle"></i> Why Convert Python to Executable?</h3>
+                    <h3>Why Convert Python to Executable?</h3>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="text-center p-3">
@@ -122,7 +122,7 @@
             <!-- Comparison Tab -->
             <div class="tab-pane fade" id="comparison" role="tabpanel">
                 <div class="content-card">
-                    <h2><i class="fas fa-balance-scale"></i> Tool Comparison</h2>
+                    <h2>Tool Comparison</h2>
 
                     <!-- Tool Cards -->
                     <div class="row mb-4">
@@ -233,19 +233,19 @@
             <!-- Methods Tab -->
             <div class="tab-pane fade" id="methods" role="tabpanel">
                 <div class="content-card">
-                    <h2><i class="fas fa-cogs"></i> Conversion Methods</h2>
+                    <h2>Conversion Methods</h2>
 
                     <!-- PyInstaller Method -->
                     <div class="mb-5" id="pyinstaller">
-                        <h3><i class="fas fa-box text-primary"></i> Method 1: PyInstaller (Recommended)</h3>
+                        <h3>Method 1: PyInstaller (Recommended)</h3>
 
-                        <h4>🛠️ Setup Process</h4>
+                        <h4>Setup Process</h4>
                         <div class="code-block">
                             <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
                             <code># Create virtual environment<br>python -m venv venv<br><br># Windows<br>venv\Scripts\activate<br><br># macOS/Linux<br>source venv/bin/activate<br><br># Install dependencies<br>pip install -r requirements.txt<br>pip install pyinstaller</code>
                         </div>
 
-                        <h4>🚀 Basic Usage</h4>
+                        <h4>Basic Usage</h4>
                         <div class="row">
                             <div class="col-md-6">
                                 <h5>Simple Conversion</h5>
@@ -287,19 +287,19 @@
 
                     <!-- auto-py-to-exe Method -->
                     <div class="mb-5" id="auto-py-to-exe">
-                        <h3><i class="fas fa-desktop text-success"></i> Method 2: auto-py-to-exe (GUI)</h3>
+                        <h3>Method 2: auto-py-to-exe (GUI)</h3>
 
                         <div class="info-box">
                             <strong>Perfect for beginners!</strong> This provides a visual interface for PyInstaller.
                         </div>
 
-                        <h4>🛠️ Installation & Usage</h4>
+                        <h4>Installation & Usage</h4>
                         <div class="code-block">
                             <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
                             <code>pip install auto-py-to-exe<br>auto-py-to-exe</code>
                         </div>
 
-                        <h4>📝 Configuration Steps</h4>
+                        <h4>Configuration Steps</h4>
                         <ol>
                             <li><strong>Script Location:</strong> Browse and select your <code>.py</code> file</li>
                             <li><strong>Onefile:</strong> Choose "One File" for single executable</li>
@@ -312,21 +312,21 @@
 
                     <!-- cx_Freeze Method -->
                     <div class="mb-5" id="cx-freeze">
-                        <h3><i class="fas fa-tachometer-alt text-warning"></i> Method 3: cx_Freeze (Fast Startup)</h3>
+                        <h3>Method 3: cx_Freeze (Fast Startup)</h3>
 
-                        <h4>🛠️ Installation</h4>
+                        <h4>Installation</h4>
                         <div class="code-block">
                             <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
                             <code>pip install cx_freeze</code>
                         </div>
 
-                        <h4>📝 Setup Script (setup.py)</h4>
+                        <h4>Setup Script (setup.py)</h4>
                         <div class="code-block">
                             <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
                             <code>from cx_Freeze import setup, Executable<br><br>build_options = {<br>    'packages': [],<br>    'excludes': [],<br>    'include_files': []<br>}<br><br>executables = [<br>    Executable('your_script.py', base='Win32GUI')<br>]<br><br>setup(<br>    name='YourApp',<br>    version='1.0',<br>    options={'build_exe': build_options},<br>    executables=executables<br>)</code>
                         </div>
 
-                        <h4>🚀 Build Commands</h4>
+                        <h4>Build Commands</h4>
                         <div class="code-block">
                             <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
                             <code># Build executable<br>python setup.py build<br><br># Create Windows installer<br>python setup.py bdist_msi</code>
@@ -335,19 +335,19 @@
 
                     <!-- Nuitka Method -->
                     <div class="mb-5" id="nuitka">
-                        <h3><i class="fas fa-rocket text-danger"></i> Method 4: Nuitka (Performance)</h3>
+                        <h3>Method 4: Nuitka (Performance)</h3>
 
                         <div class="warning-box">
                             <strong>Advanced users only!</strong> Requires C compiler installation.
                         </div>
 
-                        <h4>🛠️ Prerequisites & Installation</h4>
+                        <h4>Prerequisites & Installation</h4>
                         <div class="code-block">
                             <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
                             <code># Windows: Install MinGW64 or Visual Studio<br># macOS: Install Xcode command line tools<br># Linux: Install GCC<br><br>pip install nuitka</code>
                         </div>
 
-                        <h4>🚀 Basic Usage</h4>
+                        <h4>Basic Usage</h4>
                         <div class="code-block">
                             <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
                             <code># Compile to executable<br>python -m nuitka --onefile your_script.py<br><br># GUI application<br>python -m nuitka --onefile --windows-disable-console your_script.py<br><br># With optimizations<br>python -m nuitka --onefile --enable-plugin=anti-bloat your_script.py</code>
@@ -359,12 +359,12 @@
             <!-- Troubleshooting Tab -->
             <div class="tab-pane fade" id="troubleshooting" role="tabpanel">
                 <div class="content-card">
-                    <h2><i class="fas fa-wrench"></i> Troubleshooting</h2>
+                    <h2>Troubleshooting</h2>
 
-                    <h3>🔧 Common Issues & Solutions</h3>
+                    <h3>Common Issues & Solutions</h3>
 
                     <div class="mb-4">
-                        <h4><i class="fas fa-exclamation-triangle text-warning"></i> ImportError: Module not found</h4>
+                        <h4>ImportError: Module not found</h4>
                         <div class="code-block">
                             <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
                             <code># Add hidden imports<br>pyinstaller --hidden-import=module_name your_script.py</code>
@@ -372,7 +372,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <h4><i class="fas fa-file-alt text-info"></i> Missing Data Files</h4>
+                        <h4>Missing Data Files</h4>
                         <div class="code-block">
                             <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
                             <code># Include data files<br>pyinstaller --add-data "data_folder;data_folder" your_script.py<br><br># Use this in your Python code:<br>import sys<br>import os<br><br>def resource_path(relative_path):<br>    if hasattr(sys, '_MEIPASS'):<br>        return os.path.join(sys._MEIPASS, relative_path)<br>    return os.path.join(os.path.abspath("."), relative_path)</code>
@@ -380,7 +380,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <h4><i class="fas fa-compress text-success"></i> Large File Sizes</h4>
+                        <h4>Large File Sizes</h4>
                         <div class="info-box">
                             <strong>Tips to reduce executable size:</strong>
                             <ul class="mb-0">
@@ -393,7 +393,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <h4><i class="fas fa-shield-alt text-danger"></i> Antivirus False Positives</h4>
+                        <h4>Antivirus False Positives</h4>
                         <div class="warning-box">
                             <strong>Solutions:</strong>
                             <ul class="mb-0">
@@ -405,7 +405,7 @@
                         </div>
                     </div>
 
-                    <h3>🐛 Debugging Tips</h3>
+                    <h3>Debugging Tips</h3>
                     <div class="success-box">
                         <ol class="mb-0">
                             <li><strong>Test in --onedir mode first</strong> for easier debugging</li>
@@ -422,33 +422,30 @@
         <div class="content-card mt-4">
             <div class="row">
                 <div class="col-md-6">
-                    <h5><i class="fas fa-book"></i> Additional Resources</h5>
+                    <h5>Additional Resources</h5>
                     <ul class="list-unstyled">
-                        <li><a href="https://pyinstaller.readthedocs.io/" target="_blank"><i
-                                    class="fas fa-external-link-alt"></i> PyInstaller Docs</a></li>
-                        <li><a href="https://cx-freeze.readthedocs.io/" target="_blank"><i
-                                    class="fas fa-external-link-alt"></i> cx_Freeze Docs</a></li>
-                        <li><a href="https://nuitka.net/doc/user-manual.html" target="_blank"><i
-                                    class="fas fa-external-link-alt"></i> Nuitka Manual</a></li>
+                        <li><a href="https://pyinstaller.readthedocs.io/" target="_blank">PyInstaller Docs</a></li>
+                        <li><a href="https://cx-freeze.readthedocs.io/" target="_blank">cx_Freeze Docs</a></li>
+                        <li><a href="https://nuitka.net/doc/user-manual.html" target="_blank">Nuitka Manual</a></li>
                     </ul>
                 </div>
                 <div class="col-md-6">
-                    <h5><i class="fas fa-heart"></i> Acknowledgments</h5>
+                    <h5>Acknowledgments</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-star text-warning"></i> PyInstaller Team</li>
-                        <li><i class="fas fa-star text-warning"></i> cx_Freeze Developers</li>
-                        <li><i class="fas fa-star text-warning"></i> Nuitka Project</li>
-                        <li><i class="fas fa-star text-warning"></i> auto-py-to-exe</li>
+                        <li>PyInstaller Team</li>
+                        <li>cx_Freeze Developers</li>
+                        <li>Nuitka Project</li>
+                        <li>auto-py-to-exe</li>
                     </ul>
                 </div>
             </div>
             <hr>
             <div class="text-center">
                 <p class="mb-0">
-                    <i class="fas fa-balance-scale"></i> Licensed under MIT License |
-                    <i class="fas fa-code-branch"></i> <a href="#" class="text-decoration-none">Contribute on GitHub</a>
+                    Licensed under MIT License |
+                    <a href="#" class="text-decoration-none">Contribute on GitHub</a>
                     |
-                    <i class="fas fa-star"></i> <strong>Star this guide if it helped you!</strong>
+                    <strong>Star this guide if it helped you!</strong>
                 </p>
             </div>
         </div>

@@ -2,6 +2,7 @@
         function toggleMode() {
             const body = document.body;
             const isDark = body.classList.toggle("dark-mode");
+            const modeSwitchBtn = document.getElementById('modeSwitch');
 
             // Toggle Prism theme
             const prismLight = document.querySelector('link[href*="prism.min.css"]');
@@ -11,10 +12,14 @@
                 prismLight.disabled = true;
                 prismDark.disabled = false;
                 localStorage.setItem('darkMode', 'true');
+                modeSwitchBtn.classList.remove('btn-outline-dark');
+                modeSwitchBtn.classList.add('btn-outline-light');
             } else {
                 prismLight.disabled = false;
                 prismDark.disabled = true;
                 localStorage.setItem('darkMode', 'false');
+                modeSwitchBtn.classList.remove('btn-outline-light');
+                modeSwitchBtn.classList.add('btn-outline-dark');
             }
 
             // Update icon
