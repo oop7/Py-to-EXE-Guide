@@ -1,34 +1,39 @@
-        // Dark mode toggle
-        function toggleMode() {
+        // Dark mode management
+        function setDarkMode(isDark) {
             const body = document.body;
-            const isDark = body.classList.toggle("dark-mode");
             const modeSwitchBtn = document.getElementById('modeSwitch');
-
-            // Toggle Prism theme
+            const icon = document.querySelector('#modeSwitch i');
             const prismLight = document.querySelector('link[href*="prism.min.css"]');
             const prismDark = document.getElementById('prism-dark');
 
             if (isDark) {
+                body.classList.add("dark-mode");
                 prismLight.disabled = true;
                 prismDark.disabled = false;
                 localStorage.setItem('darkMode', 'true');
-                modeSwitchBtn.classList.remove('btn-outline-dark');
-                modeSwitchBtn.classList.add('btn-outline-light');
+                
+                if (modeSwitchBtn) {
+                    modeSwitchBtn.classList.remove('btn-outline-dark');
+                    modeSwitchBtn.classList.add('btn-outline-light');
+                }
+                if (icon) icon.className = 'fas fa-sun';
             } else {
+                body.classList.remove("dark-mode");
                 prismLight.disabled = false;
                 prismDark.disabled = true;
                 localStorage.setItem('darkMode', 'false');
-                modeSwitchBtn.classList.remove('btn-outline-light');
-                modeSwitchBtn.classList.add('btn-outline-dark');
+                
+                if (modeSwitchBtn) {
+                    modeSwitchBtn.classList.remove('btn-outline-light');
+                    modeSwitchBtn.classList.add('btn-outline-dark');
+                }
+                if (icon) icon.className = 'fas fa-moon';
             }
+        }
 
-            // Update icon
-            const icon = document.querySelector('#modeSwitch i');
-            if (isDark) {
-                icon.className = 'fas fa-sun';
-            } else {
-                icon.className = 'fas fa-moon';
-            }
+        function toggleMode() {
+            const isDark = !document.body.classList.contains("dark-mode");
+            setDarkMode(isDark);
         }
 
         // Copy code functionality
@@ -91,8 +96,12 @@
         // Load saved dark mode preference
         document.addEventListener('DOMContentLoaded', () => {
             const savedMode = localStorage.getItem('darkMode');
-            if (savedMode === 'true') {
-                toggleMode();
+            // Check system preference if no saved mode
+            if (savedMode === null) {
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                setDarkMode(prefersDark);
+            } else {
+                setDarkMode(savedMode === 'true');
             }
         });
 
