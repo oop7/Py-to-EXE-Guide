@@ -227,7 +227,7 @@ python -m nuitka --onefile --enable-plugin=numpy your_script.py
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues & Solutions
 
@@ -275,7 +275,7 @@ pyinstaller --onefile --upx-dir=/path/to/upx your_script.py
 
 ---
 
-## 📚 Best Practices
+## Best Practices
 
 ### 🔒 Security & Distribution
 
@@ -310,7 +310,7 @@ pyinstaller --onefile \
 
 ---
 
-## 🔧 Advanced Configuration
+## Advanced Configuration
 
 ### PyInstaller Spec Files
 
