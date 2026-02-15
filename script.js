@@ -10,7 +10,6 @@
                 body.classList.add("dark-mode");
                 prismLight.disabled = true;
                 prismDark.disabled = false;
-                localStorage.setItem('darkMode', 'true');
                 
                 if (modeSwitchBtn) {
                     modeSwitchBtn.classList.remove('btn-outline-dark');
@@ -21,7 +20,6 @@
                 body.classList.remove("dark-mode");
                 prismLight.disabled = false;
                 prismDark.disabled = true;
-                localStorage.setItem('darkMode', 'false');
                 
                 if (modeSwitchBtn) {
                     modeSwitchBtn.classList.remove('btn-outline-light');
@@ -37,14 +35,15 @@
         }
 
         function getPreferredDarkMode() {
-            const savedMode = localStorage.getItem('darkMode');
-            if (savedMode === null) {
-                return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            }
-            return savedMode === 'true';
+            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         }
 
         setDarkMode(getPreferredDarkMode());
+
+        const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        systemThemeQuery.addEventListener('change', (event) => {
+            setDarkMode(event.matches);
+        });
 
         // Copy code functionality
         function copyCode(button) {
