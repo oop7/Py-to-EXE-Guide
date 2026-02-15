@@ -161,6 +161,11 @@
             const codeBlocks = document.querySelectorAll('.code-block');
 
             codeBlocks.forEach(block => {
+                const existingIndicator = block.querySelector('.scroll-indicator');
+                if (existingIndicator) {
+                    existingIndicator.remove();
+                }
+
                 if (block.scrollWidth > block.clientWidth) {
                     const indicator = document.createElement('div');
                     indicator.className = 'scroll-indicator';
