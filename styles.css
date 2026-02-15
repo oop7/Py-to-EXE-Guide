@@ -17,6 +17,11 @@
             --toc-border: rgba(0, 0, 0, 0.1);
             --scroll-btn-bg: var(--primary-color);
             --scroll-btn-inner-color: #ffffff;
+            --table-bg: #ffffff;
+            --table-header-bg: #f2f4f7;
+            --table-border-color: #e9ecef;
+            --table-text-color: #2c3e50;
+            --table-header-text: var(--primary-color);
         }
 
         body {
@@ -119,6 +124,14 @@
             box-shadow: var(--card-hover-shadow);
         }
 
+        .tool-card,
+        .tool-card .card-body,
+        .tool-card h5,
+        .tool-card p,
+        .tool-card li {
+            color: var(--text-color) !important;
+        }
+
         .tool-icon {
             font-size: 2.5rem;
             margin-bottom: 20px;
@@ -182,26 +195,27 @@
         }
 
         .comparison-table {
-            background: var(--card-bg);
+            background: var(--table-bg);
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--card-shadow);
-            border: 1px solid var(--card-border);
+            border: 1px solid var(--table-border-color);
         }
 
         .comparison-table th {
-            background: var(--bg-color);
-            color: var(--text-color);
+            background: var(--table-header-bg);
+            color: var(--table-header-text);
             border: none;
             padding: 15px;
             font-weight: 600;
-            border-bottom: 2px solid #dee2e6;
+            border-bottom: 2px solid var(--table-border-color);
         }
 
         .comparison-table td {
             padding: 12px 15px;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid var(--table-border-color);
             vertical-align: middle;
+            color: var(--table-text-color);
         }
 
         .feature-icon {
@@ -250,6 +264,11 @@
             --floating-toc-shadow: 0 4px 20px rgba(0, 0, 0, 0.65);
             --toc-border: rgba(255, 255, 255, 0.12);
             --scroll-btn-bg: #404050;
+            --table-bg: #1c2128;
+            --table-header-bg: #222832;
+            --table-border-color: rgba(255, 255, 255, 0.08);
+            --table-text-color: #f4f6fb;
+            --table-header-text: var(--primary-color);
         }
 
         .dark-mode {
