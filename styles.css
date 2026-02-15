@@ -218,6 +218,10 @@
             color: var(--table-text-color);
         }
 
+        .comparison-table td strong {
+            color: inherit;
+        }
+
         .feature-icon {
             color: var(--success-color);
             margin-right: 8px;
@@ -287,6 +291,15 @@
             background: #222832;
             color: var(--primary-color);
             border-bottom-color: var(--card-border);
+        }
+
+        .dark-mode .comparison-table,
+        .dark-mode .comparison-table tbody,
+        .dark-mode .comparison-table tr,
+        .dark-mode .comparison-table td {
+            background-color: var(--table-bg) !important;
+            color: var(--table-text-color) !important;
+            border-color: var(--table-border-color) !important;
         }
 
         .dark-mode .comparison-table td {
