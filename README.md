@@ -5,14 +5,15 @@ A comprehensive guide covering multiple methods and tools for converting Python 
 ## Table of Contents
 
 1. [Quick Start Guide](#quick-start-guide)
-2. [Tool Comparison](#tool-comparison)
-3. [Method 1: PyInstaller (Recommended for Beginners)](#method-1-pyinstaller)
-4. [Method 2: auto-py-to-exe (GUI Approach)](#method-2-auto-py-to-exe)
-5. [Method 3: cx_Freeze (Fast Startup)](#method-3-cx_freeze)
-6. [Method 4: Nuitka (Performance & Security)](#method-4-nuitka)
-7. [Troubleshooting](#troubleshooting)
-8. [Best Practices](#best-practices)
-9. [Advanced Configuration](#advanced-configuration)
+2. [What This Repository Includes](#what-this-repository-includes)
+3. [Tool Comparison](#tool-comparison)
+4. [Method 1: PyInstaller (Recommended for Beginners)](#method-1-pyinstaller)
+5. [Method 2: auto-py-to-exe (GUI Approach)](#method-2-auto-py-to-exe)
+6. [Method 3: cx_Freeze (Fast Startup)](#method-3-cx_freeze)
+7. [Method 4: Nuitka (Performance & Security)](#method-4-nuitka)
+8. [Troubleshooting](#troubleshooting)
+9. [Best Practices](#best-practices)
+10. [Advanced Configuration](#advanced-configuration)
 
 ## Quick Start Guide
 
@@ -528,12 +529,12 @@ jobs:
         os: [windows-latest, macos-latest, ubuntu-latest]
     
     steps:
-    - uses: actions/checkout@v2
+        - uses: actions/checkout@v4
     
     - name: Set up Python
-      uses: actions/setup-python@v2
+            uses: actions/setup-python@v5
       with:
-        python-version: '3.9'
+                python-version: '3.12'
     
     - name: Install dependencies
       run: |
@@ -546,7 +547,7 @@ jobs:
         pyinstaller --onefile --name myapp-${{ matrix.os }} your_script.py
     
     - name: Upload artifacts
-      uses: actions/upload-artifact@v2
+            uses: actions/upload-artifact@v4
       with:
         name: executables
         path: dist/
