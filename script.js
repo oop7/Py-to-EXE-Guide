@@ -36,6 +36,16 @@
             setDarkMode(isDark);
         }
 
+        function getPreferredDarkMode() {
+            const savedMode = localStorage.getItem('darkMode');
+            if (savedMode === null) {
+                return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            }
+            return savedMode === 'true';
+        }
+
+        setDarkMode(getPreferredDarkMode());
+
         // Copy code functionality
         function copyCode(button) {
             const codeBlock = button.nextElementSibling;
@@ -77,42 +87,24 @@
             }
         });
 
-        // Smooth scrolling for TOC links
-        document.querySelectorAll('.toc-item').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
+        function setupTocSmoothScroll() {
+            document.querySelectorAll('.toc-item').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
 
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
-        });
+        }
 
-        // Load saved dark mode preference
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedMode = localStorage.getItem('darkMode');
-            // Check system preference if no saved mode
-            if (savedMode === null) {
-                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                setDarkMode(prefersDark);
-            } else {
-                setDarkMode(savedMode === 'true');
-            }
-        });
-
-        // Add syntax highlighting to code blocks
-        document.addEventListener('DOMContentLoaded', () => {
-            // Apply Prism highlighting to code blocks
-            Prism.highlightAll();
-        });
-
-        // Tab switching with URL hash support
-        document.addEventListener('DOMContentLoaded', () => {
+        function setupHashTabBehavior() {
             const hash = window.location.hash;
             if (hash) {
                 const tabButton = document.querySelector(`[data-bs-target="${hash}"]`);
@@ -121,28 +113,18 @@
                     tab.show();
                 }
             }
-        });
+        }
 
-        // Update URL hash when tab changes
-        document.querySelectorAll('[data-bs-toggle="pill"]').forEach(tab => {
-            tab.addEventListener('shown.bs.tab', (e) => {
-                const target = e.target.getAttribute('data-bs-target');
-                history.replaceState(null, null, target);
+        function setupTabHistoryListeners() {
+            document.querySelectorAll('[data-bs-toggle="pill"]').forEach(tab => {
+                tab.addEventListener('shown.bs.tab', (e) => {
+                    const target = e.target.getAttribute('data-bs-target');
+                    history.replaceState(null, null, target);
+                });
             });
-        });
+        }
 
-        // Add loading animation for better UX
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.3s ease';
-
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
-        });
-
-        // Add hover effects to tool cards
-        document.addEventListener('DOMContentLoaded', () => {
+        function initToolCardHover() {
             const toolCards = document.querySelectorAll('.tool-card');
 
             toolCards.forEach(card => {
@@ -154,6 +136,25 @@
                     card.style.transform = 'translateY(0) scale(1)';
                 });
             });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            Prism.highlightAll();
+            setupTocSmoothScroll();
+            setupHashTabBehavior();
+            setupTabHistoryListeners();
+            initToolCardHover();
+            addProgressIndicator();
+        });
+
+        // Add loading animation for better UX
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s ease';
+
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
         });
 
         // Add progress indicator for long code blocks
@@ -178,6 +179,4 @@
             });
         }
 
-        // Initialize progress indicators
-        document.addEventListener('DOMContentLoaded', addProgressIndicator);
         window.addEventListener('resize', addProgressIndicator);
